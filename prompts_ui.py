@@ -7,7 +7,7 @@ load_dotenv()
 
 llm = HuggingFaceEndpoint(
     repo_id= "Qwen/Qwen3-Coder-480B-A35B-Instruct",
-    task= "text-generation",
+    task= "text-generation", 
     temperature=1.5
 )
 
