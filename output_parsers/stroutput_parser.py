@@ -10,14 +10,21 @@ llm = HuggingFaceEndpoint(repo_id="google/gemma-2-2b-it", task="text-generation"
 model = ChatHuggingFace( llm=llm)
 
 #1st prompt
-
 template1 = PromptTemplate(
     template="Write a detailed report in {topic}",
     input_variables=['topic']
 )
 
 #2nd prompt
-
-template1 = PromptTemplate(
-    
+template2 = PromptTemplate(
+    template="Write a 5 line summary on the following text. /n {text}",
+    input_variables=['text']
 )
+
+parser = StrOutputParser()
+
+chain = template1 | model | template2 | model | parser
+
+result = chain.invoke({"topic" : "Oxygen"})
+
+print(result)
