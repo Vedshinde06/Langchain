@@ -9,7 +9,8 @@ load_dotenv()
 llm = HuggingFaceEndpoint(repo_id="google/gemma-2-2b-it", task="text-generation")
 
 model = ChatHuggingFace(llm=llm)
-
+  
+ #pydantic model 
 class Person(BaseModel):
     
     name: str = Field(description='name of the person')
