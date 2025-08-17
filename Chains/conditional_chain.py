@@ -22,7 +22,7 @@ parser = PydanticOutputParser(pydantic_object=Feedback)
 prompt = PromptTemplate(
     template='Give the sentiment of the following text into positive or negative \n {feedback} \n {format_instructions}',
     input_variables=['feedback'],
-    partial_variables={'format_instruction': parser.get_format_instructions()}
+    partial_variables={'format_instructions': parser.get_format_instructions()}
 )
 
 classifier_chain = prompt | gpt_model | parser 
@@ -33,7 +33,7 @@ prompt2 = PromptTemplate(
 )
 
 prompt3 = PromptTemplate(
-    template='Give an appropriate response to this negative feedback \n {feedback}',
+    template='Give an appropriate response to this negative feedback in few lines as a company\n {feedback}',
     input_variables=['feedback']
 )
 
@@ -47,6 +47,6 @@ branch_chain = RunnableBranch(
 
 chain = classifier_chain | branch_chain
 
-print(chain.invoke({'feedback': 'This is a crazy awesome phone'}))
+print(chain.invoke({'feedback': 'This is a crazy phone'}))
 
-chain.get_graph().print_ascii()
+#chain.get_graph().print_ascii()
