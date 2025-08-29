@@ -9,4 +9,6 @@ llm = HuggingFaceEndpoint(model='openai/gpt-oss-20b', task='text-generation')
 
 model = ChatHuggingFace(llm=llm)
 
-
+prompt = PromptTemlate(
+    
+)
