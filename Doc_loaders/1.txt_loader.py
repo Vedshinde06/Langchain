@@ -17,6 +17,8 @@ prompt = PromptTemplate(
     input_variables=['poem']
 )
 
+loader = TextLoader("Doc_loaders\cricket.txt", encoding="utf-8")
+
 docs = loader.load()
 
 print(type(docs))
@@ -25,7 +27,7 @@ print(len(docs))
 
 print(docs[0].page_content)
 
-print(docs[0].meta_data)
+print(docs[0].metadata)
 
 chain = prompt | llm | parser
 
