@@ -17,7 +17,7 @@ prompt = PromptTemplate(
     input_variables=['poem']
 )
 
-loader = TextLoader("Doc_loaders\cricket.txt", encoding="utf-8")
+loader = TextLoader("Doc_loaders/cricket.txt", encoding="utf-8")
 
 docs = loader.load()
 
